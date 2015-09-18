@@ -192,7 +192,7 @@ class _Bug(object):
 
     def close(self, resolution, dupeid=None, fixedin=None,
               comment=None, isprivate=False,
-              private_in_it=False, nomail=False):
+              private_in_it=False, nomail=False, status="CLOSED"):
         '''Close this bug.
         Valid values for resolution are in bz.querydefaults['resolution_list']
         For bugzilla.redhat.com that's:
@@ -214,7 +214,7 @@ class _Bug(object):
                                           resolution=resolution,
                                           dupe_of=dupeid,
                                           fixed_in=fixedin,
-                                          status="CLOSED")
+                                          status=status)
         log.debug("close: update=%s", vals)
 
         return self.bugzilla.update_bugs(self.bug_id, vals)
